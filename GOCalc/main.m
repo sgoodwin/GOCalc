@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GOCalculator.h"
 
 int main (int argc, const char * argv[])
 {
@@ -15,7 +16,15 @@ int main (int argc, const char * argv[])
         
         // insert code here...
         NSLog(@"Hello, World!");
-        
+        NSFileHandle *stdin = [NSFileHandle fileHandleWithStandardInput];
+        NSFileHandle *stdout = [NSFileHandle fileHandleWithStandardOutput];
+        GOCalculator *calculator = [[GOCalculator alloc] init];
+        while(1){
+            [stdout writeData:[@"> " dataUsingEncoding:NSUTF8StringEncoding]];
+            NSData *newdata = [stdin availableData];
+            NSString *string = [[NSString alloc] initWithData:newdata encoding:NSUTF8StringEncoding];
+            [stdout writeData:[[NSString stringWithFormat:@"%@\n", [calculator calculate:string]] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
     return 0;
 }
