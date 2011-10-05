@@ -18,16 +18,49 @@
         if([item intValue]){
             return [NSNumber numberWithInt:[item intValue]];
         }
-        return NSSelectorFromString(item);
+        if([item isEqualToString:@"+"]){
+            return @"add";
+        }
+        if([item isEqualToString:@"-"]){
+            return @"sub";
+        }
+        if([item isEqualToString:@"*"]){
+            return @"mult";
+        }
+        if([item isEqualToString:@"/"]){
+            return @"div";
+        }
+        return item;
     } ];
 }
 
 - (NSArray *)parse:(NSArray *)lexedInput{
-    NSLog(@"parsing: %@", [lexedInput valueForKeyPath:@"class"]);
-    return nil;
+    NSUInteger length = [lexedInput count];
+    NSMutableArray *parsedResult = [NSMutableArray arrayWithCapacity:length];
+    NSUInteger i = 0;
+    while(i < length){
+        id item = [lexedInput objectAtIndex:i];
+        i++;
+        NSLog(@"Looking at item: %@, parsed result so far: %@", item, [parsedResult componentsJoinedByString:@","]);
+        NSArray *theRest = [lexedInput subarrayWithRange:NSMakeRange(i, length-i)];
+        if([item isKindOfClass:[NSString class]]){
+            if([item isEqualToString:@"("]){
+                [parsedResult addObject:[self parse:theRest]];
+                return parsedResult;
+            }else if([item isEqualToString:@")"]){
+                return parsedResult;
+            }else{
+                [parsedResult addObject:item];
+            }
+        }else{
+            [parsedResult addObject:item];
+        }
+    }
+    return parsedResult;
 }
 
 - (NSNumber *)interperate:(NSArray*)parsedInput{
+    NSLog(@"Parsed input has %@", [parsedInput componentsJoinedByString:@","]);
     return [NSNumber numberWithInt:0];
 }
 

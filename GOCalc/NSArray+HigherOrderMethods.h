@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef id (^GOItemBlock)(id item);
+typedef id (^GOReduceBlock)(id previousItem, id item);
 
 @interface NSArray (HigherOrderMethods)
 - (NSArray *)map:(GOItemBlock)block;
-- (NSArray *)reduce:(GOItemBlock)block;
 @end
