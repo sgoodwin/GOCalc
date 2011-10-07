@@ -8,6 +8,7 @@
 
 #import "GOCalculator.h"
 #import "NSArray+HigherOrderMethods.h"
+#import "NSMutableArray+Stacks.h"
 
 @implementation GOCalculator
 
@@ -35,19 +36,20 @@
 }
 
 - (NSArray *)parse:(NSArray *)lexedInput{
+    NSLog(@"handling lexed input: %@", lexedInput);
     NSUInteger length = [lexedInput count];
     NSMutableArray *parsedResult = [NSMutableArray arrayWithCapacity:length];
     NSUInteger i = 0;
-    while(i < length){
+    for(i=0;i<length;i++){
         id item = [lexedInput objectAtIndex:i];
-        i++;
-        NSLog(@"Looking at item: %@, parsed result so far: %@", item, [parsedResult componentsJoinedByString:@","]);
-        NSArray *theRest = [lexedInput subarrayWithRange:NSMakeRange(i, length-i)];
         if([item isKindOfClass:[NSString class]]){
-            if([item isEqualToString:@"("]){
+            NSString *string = (NSString*)item;
+            if([string isEqualToString:@"("]){
+                i++;
+                NSArray *theRest = [lexedInput subarrayWithRange:NSMakeRange(i, length-i)];
                 [parsedResult addObject:[self parse:theRest]];
                 return parsedResult;
-            }else if([item isEqualToString:@")"]){
+            }else if([string isEqualToString:@")"]){
                 return parsedResult;
             }else{
                 [parsedResult addObject:item];
@@ -59,7 +61,7 @@
     return parsedResult;
 }
 
-- (NSNumber *)interperate:(NSArray*)parsedInput{
+- (NSNumber *)interpret:(NSArray*)parsedInput{
     NSLog(@"Parsed input has %@", [parsedInput componentsJoinedByString:@","]);
     return [NSNumber numberWithInt:0];
 }
@@ -71,7 +73,7 @@
 - (NSNumber*)calculate:(NSString*)inputString{
     NSArray *lexed = [self lex:inputString];
     NSArray *parsed = [self parse:lexed];
-    NSNumber *result = [self interperate:parsed];
+    NSNumber *result = [self interpret:parsed];
     return result;
 }
 

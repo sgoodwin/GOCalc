@@ -12,6 +12,7 @@
 		9B0130DB143AC212006758F0 /* GOCalc.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0130DA143AC212006758F0 /* GOCalc.1 */; };
 		9B0130E3143AC836006758F0 /* GOCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0130E2143AC836006758F0 /* GOCalculator.m */; };
 		9B0130E6143ACB79006758F0 /* NSArray+HigherOrderMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */; };
+		9B7056B2143E877200E431FC /* NSMutableArray+Stacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		9B0130E2143AC836006758F0 /* GOCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOCalculator.m; sourceTree = "<group>"; };
 		9B0130E4143ACB79006758F0 /* NSArray+HigherOrderMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HigherOrderMethods.h"; sourceTree = "<group>"; };
 		9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HigherOrderMethods.m"; sourceTree = "<group>"; };
+		9B7056B0143E877200E431FC /* NSMutableArray+Stacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stacks.h"; sourceTree = "<group>"; };
+		9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stacks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				9B0130E2143AC836006758F0 /* GOCalculator.m */,
 				9B0130E4143ACB79006758F0 /* NSArray+HigherOrderMethods.h */,
 				9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */,
+				9B7056B0143E877200E431FC /* NSMutableArray+Stacks.h */,
+				9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */,
 			);
 			path = GOCalc;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				9B0130D7143AC212006758F0 /* main.m in Sources */,
 				9B0130E3143AC836006758F0 /* GOCalculator.m in Sources */,
 				9B0130E6143ACB79006758F0 /* NSArray+HigherOrderMethods.m in Sources */,
+				9B7056B2143E877200E431FC /* NSMutableArray+Stacks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +248,7 @@
 				9B0130E0143AC212006758F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

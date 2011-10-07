@@ -12,7 +12,7 @@
 
 - (NSArray *)lex:(NSString*)inputString;
 - (NSArray *)parse:(NSArray *)lexedInput;
-- (NSNumber *)interperate:(NSArray*)parsedInput;
+- (NSNumber *)interpret:(NSArray*)parsedInput;
 - (NSString *)compile:(NSArray *)parseInput;
 
 - (NSNumber*)calculate:(NSString*)inputString;

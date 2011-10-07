@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GOCalculator.h"
+#import "NSMutableArray+Stacks.h"
 
 int main (int argc, const char * argv[])
 {
@@ -19,10 +20,12 @@ int main (int argc, const char * argv[])
         NSFileHandle *stdin = [NSFileHandle fileHandleWithStandardInput];
         NSFileHandle *stdout = [NSFileHandle fileHandleWithStandardOutput];
         GOCalculator *calculator = [[GOCalculator alloc] init];
+        NSMutableArray *inputLog = [NSMutableArray arrayWithCapacity:4];
         while(1){
             [stdout writeData:[@"> " dataUsingEncoding:NSUTF8StringEncoding]];
             NSData *newdata = [stdin availableData];
             NSString *string = [[NSString alloc] initWithData:newdata encoding:NSUTF8StringEncoding];
+            [inputLog push:string];
             [stdout writeData:[[NSString stringWithFormat:@"%@\n", [calculator calculate:string]] dataUsingEncoding:NSUTF8StringEncoding]];
         }
     }
