@@ -13,7 +13,8 @@
 		9B0130E3143AC836006758F0 /* GOCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0130E2143AC836006758F0 /* GOCalculator.m */; };
 		9B0130E6143ACB79006758F0 /* NSArray+HigherOrderMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */; };
 		9B7056B2143E877200E431FC /* NSMutableArray+Stacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */; };
-		9B7056B6143EA30E00E431FC /* GOParseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7056B5143EA30E00E431FC /* GOParseNode.m */; };
+		9B7056B6143EA30E00E431FC /* GOMathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7056B5143EA30E00E431FC /* GOMathNode.m */; };
+		9B7056B9143EB85000E431FC /* NSNumber+BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7056B8143EB85000E431FC /* NSNumber+BasicMath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,8 +42,10 @@
 		9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HigherOrderMethods.m"; sourceTree = "<group>"; };
 		9B7056B0143E877200E431FC /* NSMutableArray+Stacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stacks.h"; sourceTree = "<group>"; };
 		9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stacks.m"; sourceTree = "<group>"; };
-		9B7056B4143EA30E00E431FC /* GOParseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOParseNode.h; sourceTree = "<group>"; };
-		9B7056B5143EA30E00E431FC /* GOParseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOParseNode.m; sourceTree = "<group>"; };
+		9B7056B4143EA30E00E431FC /* GOMathNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOMathNode.h; sourceTree = "<group>"; };
+		9B7056B5143EA30E00E431FC /* GOMathNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOMathNode.m; sourceTree = "<group>"; };
+		9B7056B7143EB85000E431FC /* NSNumber+BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+BasicMath.h"; sourceTree = "<group>"; };
+		9B7056B8143EB85000E431FC /* NSNumber+BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+BasicMath.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +97,10 @@
 				9B0130E5143ACB79006758F0 /* NSArray+HigherOrderMethods.m */,
 				9B7056B0143E877200E431FC /* NSMutableArray+Stacks.h */,
 				9B7056B1143E877200E431FC /* NSMutableArray+Stacks.m */,
-				9B7056B4143EA30E00E431FC /* GOParseNode.h */,
-				9B7056B5143EA30E00E431FC /* GOParseNode.m */,
+				9B7056B4143EA30E00E431FC /* GOMathNode.h */,
+				9B7056B5143EA30E00E431FC /* GOMathNode.m */,
+				9B7056B7143EB85000E431FC /* NSNumber+BasicMath.h */,
+				9B7056B8143EB85000E431FC /* NSNumber+BasicMath.m */,
 			);
 			path = GOCalc;
 			sourceTree = "<group>";
@@ -163,7 +168,8 @@
 				9B0130E3143AC836006758F0 /* GOCalculator.m in Sources */,
 				9B0130E6143ACB79006758F0 /* NSArray+HigherOrderMethods.m in Sources */,
 				9B7056B2143E877200E431FC /* NSMutableArray+Stacks.m in Sources */,
-				9B7056B6143EA30E00E431FC /* GOParseNode.m in Sources */,
+				9B7056B6143EA30E00E431FC /* GOMathNode.m in Sources */,
+				9B7056B9143EB85000E431FC /* NSNumber+BasicMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

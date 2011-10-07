@@ -9,7 +9,7 @@
 #import "GOCalculator.h"
 #import "NSArray+HigherOrderMethods.h"
 #import "NSMutableArray+Stacks.h"
-#import "GOParseNode.h"
+#import "GOMathNode.h"
 
 @implementation GOCalculator
 
@@ -21,32 +21,32 @@
             return [NSNumber numberWithInt:[item intValue]];
         }
         if([item isEqualToString:@"+"]){
-            return @"add";
+            return @"add:";
         }
         if([item isEqualToString:@"-"]){
-            return @"sub";
+            return @"sub:";
         }
         if([item isEqualToString:@"*"]){
-            return @"mult";
+            return @"mult:";
         }
         if([item isEqualToString:@"/"]){
-            return @"div";
+            return @"div:";
         }
         return item;
     } ];
 }
 
-- (GOParseNode *)parse:(NSArray *)lexedInput{
+- (GOMathNode *)parse:(NSArray *)lexedInput{
     NSUInteger length = [lexedInput count];
     NSUInteger i = 0;
-    GOParseNode *root = [GOParseNode node];
-    GOParseNode *currentNode = root;
+    GOMathNode *root = [GOMathNode node];
+    GOMathNode *currentNode = root;
     for(i=0;i<length;i++){
         id item = [lexedInput objectAtIndex:i];
         if([item isKindOfClass:[NSString class]]){
             NSString *string = (NSString*)item;
             if([string isEqualToString:@"("]){
-                currentNode = [GOParseNode nodeWithParent:currentNode];
+                currentNode = [GOMathNode nodeWithParent:currentNode];
             }else if([string isEqualToString:@")"]){
                 currentNode = [currentNode parent];
             }else{
@@ -59,18 +59,17 @@
     return root;
 }
 
-- (NSNumber *)interpret:(GOParseNode *)parsedInput{
-    NSLog(@"Parsed input has %@", parsedInput);
-    return [NSNumber numberWithInt:0];
+- (NSNumber *)interpret:(GOMathNode *)parsedInput{
+    return [parsedInput calculate];
 }
 
-- (NSString *)compile:(NSArray *)parseInput{
-    return @"0";
+- (NSString *)compile:(GOMathNode *)parseInput{
+    return [parseInput description];
 }
 
 - (NSNumber*)calculate:(NSString*)inputString{
     NSArray *lexed = [self lex:inputString];
-    GOParseNode *parsed = [self parse:lexed];
+    GOMathNode *parsed = [self parse:lexed];
     NSNumber *result = [self interpret:parsed];
     return result;
 }
