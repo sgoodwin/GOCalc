@@ -10,10 +10,11 @@
 
 // A parse node is like a set of parens "()", it holds anything inside the parens and also knows about outer parens
 
-@interface GOParseNode : NSObject
-@property(nonatomic, weak) GOParseNode *parent;
+@interface GOMathNode : NSObject
+@property(nonatomic, weak) GOMathNode *parent;
 @property(nonatomic, retain) NSMutableArray *contents;
-+ (id)nodeWithParent:(GOParseNode*)parent;
++ (id)nodeWithParent:(GOMathNode*)parent;
 + (id)node;
 - (void)addItem:(id)item;
+- (NSNumber*)calculate;
 @end
