@@ -9,11 +9,12 @@
 #import "GOCalculator.h"
 #import "NSArray+HigherOrderMethods.h"
 #import "NSMutableArray+Stacks.h"
+#import "GOParseNode.h"
 
 @implementation GOCalculator
 
 - (NSArray *)lex:(NSString*)inputString{
-    NSString *cleaned = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSString *cleaned = [[inputString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]] stringByTrimmingCharactersInSet:[NSCharacterSet symbolCharacterSet]];
     NSArray *splitItems = [cleaned componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return [splitItems map:^id(id item){
         if([item intValue]){
@@ -35,34 +36,31 @@
     } ];
 }
 
-- (NSArray *)parse:(NSArray *)lexedInput{
-    NSLog(@"handling lexed input: %@", lexedInput);
+- (GOParseNode *)parse:(NSArray *)lexedInput{
     NSUInteger length = [lexedInput count];
-    NSMutableArray *parsedResult = [NSMutableArray arrayWithCapacity:length];
     NSUInteger i = 0;
+    GOParseNode *root = [GOParseNode node];
+    GOParseNode *currentNode = root;
     for(i=0;i<length;i++){
         id item = [lexedInput objectAtIndex:i];
         if([item isKindOfClass:[NSString class]]){
             NSString *string = (NSString*)item;
             if([string isEqualToString:@"("]){
-                i++;
-                NSArray *theRest = [lexedInput subarrayWithRange:NSMakeRange(i, length-i)];
-                [parsedResult addObject:[self parse:theRest]];
-                return parsedResult;
+                currentNode = [GOParseNode nodeWithParent:currentNode];
             }else if([string isEqualToString:@")"]){
-                return parsedResult;
+                currentNode = [currentNode parent];
             }else{
-                [parsedResult addObject:item];
+                [currentNode addItem:item];
             }
         }else{
-            [parsedResult addObject:item];
+            [currentNode addItem:item];
         }
     }
-    return parsedResult;
+    return root;
 }
 
-- (NSNumber *)interpret:(NSArray*)parsedInput{
-    NSLog(@"Parsed input has %@", [parsedInput componentsJoinedByString:@","]);
+- (NSNumber *)interpret:(GOParseNode *)parsedInput{
+    NSLog(@"Parsed input has %@", parsedInput);
     return [NSNumber numberWithInt:0];
 }
 
@@ -72,7 +70,7 @@
 
 - (NSNumber*)calculate:(NSString*)inputString{
     NSArray *lexed = [self lex:inputString];
-    NSArray *parsed = [self parse:lexed];
+    GOParseNode *parsed = [self parse:lexed];
     NSNumber *result = [self interpret:parsed];
     return result;
 }

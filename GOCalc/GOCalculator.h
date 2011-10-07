@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class GOParseNode;
 @interface GOCalculator : NSObject
 
 - (NSArray *)lex:(NSString*)inputString;
-- (NSArray *)parse:(NSArray *)lexedInput;
-- (NSNumber *)interpret:(NSArray*)parsedInput;
+- (GOParseNode *)parse:(NSArray *)lexedInput;
+- (NSNumber *)interpret:(GOParseNode *)parsedInput;
 - (NSString *)compile:(NSArray *)parseInput;
 
 - (NSNumber*)calculate:(NSString*)inputString;

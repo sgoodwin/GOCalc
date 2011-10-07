@@ -14,9 +14,6 @@ int main (int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        
-        // insert code here...
-        NSLog(@"Hello, World!");
         NSFileHandle *stdin = [NSFileHandle fileHandleWithStandardInput];
         NSFileHandle *stdout = [NSFileHandle fileHandleWithStandardOutput];
         GOCalculator *calculator = [[GOCalculator alloc] init];
