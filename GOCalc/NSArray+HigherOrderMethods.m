@@ -12,9 +12,9 @@
 
 - (NSArray *)map:(GOItemBlock)block{
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:[self count]];
-    for(id item in self){
-        [results addObject:block(item)];
-    }
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [results addObject:block(idx, obj)];
+    }];
     return results;
 }
 

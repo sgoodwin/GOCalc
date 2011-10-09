@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id (^GOItemBlock)(id item);
+typedef id (^GOItemBlock)(NSUInteger idx, id item);
 typedef id (^GOReduceBlock)(id runningResult, NSString* operation, id nextItem);
 
 @interface NSArray (HigherOrderMethods)
